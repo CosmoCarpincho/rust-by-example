@@ -14001,6 +14001,10 @@ msgid ""
 "standard `assert_eq!` and `assert_ne!` macros, to provide colorful diff.  \n"
 "File `Cargo.toml`:"
 msgstr ""
+"Un ejemplo de ello es [`pretty_assertions`](https://docs.rs/pretty_assertions/1.0.0/pretty_assertions/index.html)"
+", que extiende los macros estándar "
+"`assert_eq!` y `assert_ne!` para proporcionar un diff con colores.  \n"
+"Archivo `Cargo.toml`:"
 
 #: src\testing/dev_dependencies.md:11
 msgid ""
@@ -14010,16 +14014,24 @@ msgid ""
 "pretty_assertions = \"1\"\n"
 "```"
 msgstr ""
+"```toml\n"
+"# se omiten los datos estándar de crate\n"
+"[dev-dependencies]\n"
+"pretty_assertions = \"1\"\n"
+"```"
 
 #: src\testing/dev_dependencies.md:27
 msgid "// crate for test-only use. Cannot be used in non-test code.\n"
 msgstr ""
+"// crate para uso exclusivo en pruebas. No puede utilizarse en código que no sea de prueba.\n"
 
 #: src\testing/dev_dependencies.md:38
 msgid ""
 "[Cargo](http://doc.crates.io/specifying-dependencies.html) docs on "
 "specifying dependencies."
 msgstr ""
+"Documentación de [Cargo](http://doc.crates.io/specifying-dependencies.html)"
+"sobre cómo especificar dependencias."
 
 #: src\unsafe.md:3
 msgid ""
@@ -14030,28 +14042,35 @@ msgid ""
 "put in place by the compiler; specifically, there are four primary things "
 "that unsafe is used for:"
 msgstr ""
+"Como introducción a esta sección, para tomar prestado de [la documentación oficial]"
+"(https://doc.rust-lang.org/book/ch19-01-unsafe-rust.html), \"se debe tratar de minimizar "
+"la cantidad de código unsafe (inseguro) en una base de código.\" Con esto en mente, ¡comencemos! "
+"Las anotaciones unsafe en Rust se utilizan para evadir las protecciones establecidas por el compilador; "
+"específicamente, hay cuatro usos principales de unsafe:"
 
 #: src\unsafe.md:9
 msgid "dereferencing raw pointers"
-msgstr ""
+msgstr "desreferenciar punteros raw (bruto/crudos/sin procesar)"
 
 #: src\unsafe.md:10
 msgid ""
 "calling functions or methods which are `unsafe` (including calling a "
 "function over FFI, see [a previous chapter](std_misc/ffi.md) of the book)"
 msgstr ""
+"llamar a funciones o métodos que son `unsafe` (incluyendo llamar a "
+"una función mediante FFI, ver [un capítulo anterior](std_misc/ffi.md) del libro)"
 
 #: src\unsafe.md:12
 msgid "accessing or modifying static mutable variables"
-msgstr ""
+msgstr "acceder o modificar variables estáticas mutables"
 
 #: src\unsafe.md:13
 msgid "implementing unsafe traits"
-msgstr ""
+msgstr "implementar traits unsafe"
 
 #: src\unsafe.md:15
 msgid "Raw Pointers"
-msgstr ""
+msgstr "Punteros Raw (en bruto/crudos/sin procesar)"
 
 #: src\unsafe.md:17
 msgid ""
@@ -14060,6 +14079,9 @@ msgid ""
 "borrow checker. Dereferencing a raw pointer can only be done through an "
 "unsafe block."
 msgstr ""
+"Los punteros Raw `*` y las referencias `&T` funcionan de manera similar, pero las referencias son"
+"siempre seguras, ya que se garantiza que apunten a datos válidos gracias al verificador de préstamos. "
+"La desreferenciación de un puntero crudo solo puede realizarse dentro de un bloque unsafe."
 
 #: src\unsafe.md:32
 msgid "Calling Unsafe Functions"
@@ -14073,6 +14095,11 @@ msgid ""
 "slice/fn.from_raw_parts.html) which will create a slice given a pointer to "
 "the first element and a length."
 msgstr ""
+"Algunas funciones pueden declararse como `unsafe` (inseguras), lo que significa que es la "
+"responsabilidad del programador garantizar la corrección (correctness) en lugar de la del "
+"compilador. Un ejemplo de ello es [`std::slice::from_raw_parts`](https://doc.rust-lang.org/std/"
+"slice/fn.from_raw_parts.html) que creará una porción dado un puntero al primer "
+"elemento y una longitud."
 
 #: src\unsafe.md:56
 msgid ""
@@ -14082,6 +14109,10 @@ msgid ""
 "the program's behaviour is undefined and there is no knowing what will "
 "happen."
 msgstr ""
+"Para `slice::from_raw_parts`, una de las condiciones que _debe_ cumplirse es que el "
+"puntero proporcionado apunte a una memoria válida y que la memoria referenciada sea "
+"del tipo correcto. Si estos invariantes no se mantienen, el comportamiento del "
+"programa es indefinido y no se sabe qué ocurrirá."
 
 #: src\unsafe/asm.md:3
 msgid ""
@@ -14092,40 +14123,48 @@ msgid ""
 "level hardware primitives, e.g. in kernel code, may also demand this "
 "functionality."
 msgstr ""
+"Rust ofrece soporte para ensamblador en línea mediante el macro `asm!`. Puede usarse para "
+"incrustar ensamblador escrito a mano en la salida generada por el compilador. En "
+"general, esto no debería ser necesario, pero podría emplearse cuando el rendimiento o la "
+"sincronización requeridos no se puedan alcanzar de otra manera. Acceder a primitivas de "
+"hardware de bajo nivel, por ejemplo en código de kernel, también puede exigir esta "
+"funcionalidad."
 
 #: src\unsafe/asm.md:8
 msgid ""
 "**Note**: the examples here are given in x86/x86-64 assembly, but other "
 "architectures are also supported."
 msgstr ""
+"**Nota**: los ejemplos aquí se presentan en ensamblador x86/x86-64, pero otras "
+"arquitecturas también son compatibles."
 
 #: src\unsafe/asm.md:10
 msgid "Inline assembly is currently supported on the following architectures:"
-msgstr ""
+msgstr "El ensamblador en línea está actualmente soportado en las siguientes arquitecturas:"
 
 #: src\unsafe/asm.md:12
 msgid "x86 and x86-64"
-msgstr ""
+msgstr "x86 y x86-64"
 
 #: src\unsafe/asm.md:13
 msgid "ARM"
-msgstr ""
+msgstr "ARM"
 
 #: src\unsafe/asm.md:14
 msgid "AArch64"
-msgstr ""
+msgstr "AArch64"
 
 #: src\unsafe/asm.md:15
 msgid "RISC-V"
-msgstr ""
+msgstr "RISC-V"
 
 #: src\unsafe/asm.md:17
 msgid "Basic usage"
-msgstr ""
+msgstr "Basic usage"
 
 #: src\unsafe/asm.md:19
 msgid "Let us start with the simplest possible example:"
-msgstr ""
+msgstr "Empecemos con el ejemplo más sencillo posible:"
 
 #: src\unsafe/asm.md:22 src\unsafe/asm.md:42 src\unsafe/asm.md:69
 #: src\unsafe/asm.md:107 src\unsafe/asm.md:124 src\unsafe/asm.md:149
@@ -14134,11 +14173,11 @@ msgstr ""
 #: src\unsafe/asm.md:338 src\unsafe/asm.md:376 src\unsafe/asm.md:403
 #: src\unsafe/asm.md:427 src\unsafe/asm.md:465
 msgid "\"x86_64\""
-msgstr ""
+msgstr "\"x86_64\""
 
 #: src\unsafe/asm.md:26
 msgid "\"nop\""
-msgstr ""
+msgstr "\"nop\""
 
 #: src\unsafe/asm.md:31
 msgid ""
@@ -14148,20 +14187,27 @@ msgid ""
 "break various invariants. The instructions to be inserted are listed in the "
 "first argument of the `asm!` macro as a string literal."
 msgstr ""
+"Esto insertará una instrucción NOP (sin operación) en el ensamblador "
+"generado por el compilador. Ten en cuenta que todas las invocaciones a "
+"`asm!` deben estar dentro de un bloque `unsafe`, ya que podrían insertar "
+"instrucciones arbitrarias y romper diversos invariantes. Las instrucciones a "
+"insertar se listan en el primer argumento del macro `asm!` como literal de cadena."
 
 #: src\unsafe/asm.md:36
 msgid "Inputs and outputs"
-msgstr ""
+msgstr ""Entradas y salidas (Inputs and outputs)"
 
 #: src\unsafe/asm.md:38
 msgid ""
 "Now inserting an instruction that does nothing is rather boring. Let us do "
 "something that actually acts on data:"
 msgstr ""
+"Ahora, insertar una instrucción que no hace nada resulta bastante aburrido. "
+"Hagamos algo que realmente actúe sobre datos:"
 
 #: src\unsafe/asm.md:47
 msgid "\"mov {}, 5\""
-msgstr ""
+msgstr "\"mov {}, 5\""
 
 #: src\unsafe/asm.md:53
 msgid ""
@@ -14178,18 +14224,29 @@ msgid ""
 "into the template and will read the variable from there after the inline "
 "assembly finishes executing."
 msgstr ""
+"Esto escribirá el valor `5` en la variable `x` de tipo `u64`. Puedes ver que el "
+"literal de cadena que usamos para especificar las instrucciones es en realidad una "
+"cadena plantilla (template string). Se rige por las mismas reglas que los "
+"[format strings](https://doc.rust-lang.org/std/fmt/#syntax) de Rust. Sin embargo, los "
+"argumentos que se insertan en la plantilla lucen algo diferente a lo que quizás estés acostumbrado. "
+"Primero, debemos especificar si la variable es una entrada o una salida del "
+"ensamblador en línea. En este caso es una salida, lo que declaramos escribiendo "
+"`out`. También hay que indicar en qué tipo de registro el ensamblador espera la "
+"variable. Aquí la colocamos en un registro general arbitrario especificando "
+"`reg`. El compilador elegirá un registro adecuado para insertar en la plantilla y "
+"leerá la variable de allí una vez que finalice la ejecución del ensamblador en línea."
 
 #: src\unsafe/asm.md:66
 msgid "Let us see another example that also uses an input:"
-msgstr ""
+msgstr "Veamos otro ejemplo que también usa una entrada (input):"
 
 #: src\unsafe/asm.md:76
 msgid "\"mov {0}, {1}\""
-msgstr ""
+msgstr "\"mov {0}, {1}\""
 
 #: src\unsafe/asm.md:77 src\unsafe/asm.md:112 src\unsafe/asm.md:130
 msgid "\"add {0}, 5\""
-msgstr ""
+msgstr "\"add {0}, 5\""
 
 #: src\unsafe/asm.md:86
 msgid ""
@@ -14197,10 +14254,13 @@ msgid ""
 "variable `o`. The particular way this assembly does this is first copying "
 "the value from `i` to the output, and then adding `5` to it."
 msgstr ""
+"Esto sumará `5` a la entrada en la variable `i` y escribirá el resultado en la "
+"variable `o`. La forma particular en que este ensamblador lo hace es copiando "
+"primero el valor de `i` a la salida y luego sumándole `5`."
 
 #: src\unsafe/asm.md:90
 msgid "The example shows a few things:"
-msgstr ""
+msgstr "El ejemplo muestra algunas cosas:"
 
 #: src\unsafe/asm.md:92
 msgid ""
@@ -14209,11 +14269,16 @@ msgid ""
 "joined together with newlines between them. This makes it easy to format "
 "assembly code."
 msgstr ""
+"Primero, podemos ver que `asm!` permite múltiples argumentos de cadena de "
+"plantilla (template string); cada uno se trata como una línea separada de código ensamblador, "
+"como si todos se unieran con saltos de línea. Esto facilita el formateo del "
+"código ensamblador."
 
 #: src\unsafe/asm.md:97
 msgid ""
 "Second, we can see that inputs are declared by writing `in` instead of `out`."
 msgstr ""
+"Segundo, podemos ver que las entradas se declaran escribiendo `in` en lugar de `out`."
 
 #: src\unsafe/asm.md:99
 msgid ""
@@ -14223,10 +14288,16 @@ msgid ""
 "using this facility is generally recommended, as it improves readability, "
 "and allows reordering instructions without changing the argument order."
 msgstr ""
+"En tercer lugar, podemos ver que es posible especificar un número o un nombre de "
+"argumento, como en cualquier cadena de formato. Para las plantillas de ensamblador "
+"en línea, esto es especialmente útil, ya que los argumentos suelen usarse más de "
+"una vez. Para un ensamblador en línea más complejo se recomienda, en general, "
+"usar esta facilidad, pues mejora la legibilidad y permite reordenar las "
+"instrucciones sin cambiar el orden de los argumentos."
 
 #: src\unsafe/asm.md:104
 msgid "We can further refine the above example to avoid the `mov` instruction:"
-msgstr ""
+msgstr "Podemos refinar aún más el ejemplo anterior para evitar la instrucción `mov`:"
 
 #: src\unsafe/asm.md:118
 msgid ""
@@ -14234,16 +14305,21 @@ msgid ""
 "and output. This is different from specifying an input and output separately "
 "in that it is guaranteed to assign both to the same register."
 msgstr ""
+"Podemos ver que se utiliza `inout` para especificar un argumento que es a la vez "
+"entrada y salida. Esto difiere de especificar una entrada y una salida por separado, "
+"ya que se garantiza que ambos se asignen al mismo registro."
 
 #: src\unsafe/asm.md:121
 msgid ""
 "It is also possible to specify different variables for the input and output "
 "parts of an `inout` operand:"
 msgstr ""
+"También es posible especificar variables distintas para las partes de entrada y "
+"salida de un operando `inout`:"
 
 #: src\unsafe/asm.md:136
 msgid "Late output operands"
-msgstr ""
+msgstr "Operandos de salida tardíos"
 
 #: src\unsafe/asm.md:138
 msgid ""
@@ -14256,20 +14332,30 @@ msgid ""
 "output that is written only after all inputs have been consumed. There is "
 "also an `inlateout` variant of this specifier."
 msgstr ""
+"El compilador de Rust es conservador en la asignación de operandos. Se asume que un "
+"`out` puede escribirse en cualquier momento y, por ello, no puede compartir su "
+"ubicación con ningún otro argumento. Sin embargo, para garantizar un rendimiento "
+"óptimo es importante usar la menor cantidad de registros posible, para evitar "
+"tener que guardarlos y recargarlos alrededor del bloque de ensamblador en línea. "
+"Para ello, Rust proporciona el especificador `lateout`. Este puede usarse en cualquier "
+"salida que se escriba solo después de consumir todas las entradas. También existe una "
+"variante `inlateout` de este especificador."
 
 #: src\unsafe/asm.md:146
 msgid ""
 "Here is an example where `inlateout` _cannot_ be used in `release` mode or "
 "other optimized cases:"
 msgstr ""
+"Aquí hay un ejemplo en el que `inlateout` _no puede_ usarse en modo `release` u otros "
+"casos optimizados:"
 
 #: src\unsafe/asm.md:157 src\unsafe/asm.md:189 src\unsafe/asm.md:472
 msgid "\"add {0}, {1}\""
-msgstr ""
+msgstr "\"add {0}, {1}\""
 
 #: src\unsafe/asm.md:158
 msgid "\"add {0}, {2}\""
-msgstr ""
+msgstr "\"add {0}, {2}\""
 
 #: src\unsafe/asm.md:168
 msgid ""
